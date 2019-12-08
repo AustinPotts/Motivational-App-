@@ -7,18 +7,58 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var background: UIImageView!
-    
     @IBOutlet weak var quote: UIImageView!
+    
+    let quotes = Bundle.main.decode([Quote].self, from: "quotes.json")
+    let images = Bundle.main.decode([String].self, from: "pictures.json")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
+    
+    func updateQuoate(){
+        guard let backgroundImageName = images.randomElement() else {
+            fatalError("Unable to read an image")
+        }
+        
+        background.image = UIImage(named: backgroundImageName)
+        
+        guard let selectedQuote = quotes.randomElement() else {
+            fatalError("unable to read quote")
+        }
+        
+        let insetAmount = CGFloat(250)
+        let drawBounds = quote.bounds.inset(by: UIEdgeInsets(top: insetAmount, left: insetAmount, bottom: insetAmount, right: insetAmount))
+        
+        var quoteRect = CGRect(x: 0, y: 0, width: .greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
+        
+        
+        
+        var fontSize: CGFloat = 120
+        var font: UIFont!
+        
+        var attrs: [NSAttributedString: Any]!
+        var str: NSAttributedString!
+        
+        while true {
+            font = UIFont(name: "Georgia-Italic", size: fontSize)!
+            
+            attrs = [.font: font, .foregroundColor: UIColor.white]
+            
+            str = NSAttributedString(string: selectedQuote.text, attributes: attrs)
+            
+        }
+        
+    }
+    
 
 }
 
