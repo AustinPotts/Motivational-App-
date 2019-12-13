@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         var fontSize: CGFloat = 120
         var font: UIFont!
         
-        var attrs: [NSAttributedString: Any]!
+        var attrs: [NSAttributedString.Key: Any]!
         var str: NSAttributedString!
         
         while true {
@@ -54,6 +54,8 @@ class ViewController: UIViewController {
             attrs = [.font: font, .foregroundColor: UIColor.white]
             
             str = NSAttributedString(string: selectedQuote.text, attributes: attrs)
+            
+            quoteRect = str.boundingRect(with: CGSize(width: drawBounds.width, height: .greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: <#T##NSStringDrawingContext?#>)
             
         }
         
