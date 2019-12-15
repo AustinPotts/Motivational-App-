@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import UserNotifications
 
 class ViewController: UIViewController {
 
@@ -22,6 +23,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {allowed, error in
+            if allowed {
+                self.configureAlerts()
+            }
+        }
+        
     }
 
     
@@ -102,6 +109,41 @@ class ViewController: UIViewController {
         
         present(ac, animated: true)
         
+    }
+    
+    func configureAlerts(){
+        let center = UNUserNotificationCenter.current()
+        center.removeAllDeliveredNotifications()
+        center.removeAllPendingNotificationRequests()
+        
+        let shuffle = quotes.shuffled()
+        
+        for i in 1...7 {
+            let content = UNMutableNotificationContent()
+            content.title = "Inner Peace"
+            content.body = shuffle[i].text
+            
+            var dateComponents = DateComponents()
+            dateComponents.day = i
+            
+            if let alertDate = Calendar.current.date(byAdding: dateComponents, to: Date()) {
+                var alertComponents = Calendar.current.dateComponents([.day, .month, .year], from: alertDate)
+                alertComponents.hour = 10
+                
+               // let trigger = UNCalendarNotificationTrigger(dateMatching: alertComponents, repeats: false) This is how you would do it for Daily Notifications
+                
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(i) * 5, repeats: false) //This is a test
+                
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                
+                center.add(request) { (error) in
+                    if let error = error {
+                        print(error)
+                    }
+                }
+                
+            }
+        }
     }
     
 }
