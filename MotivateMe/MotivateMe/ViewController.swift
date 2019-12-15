@@ -57,10 +57,28 @@ class ViewController: UIViewController {
             
             quoteRect = str.boundingRect(with: CGSize(width: drawBounds.width, height: .greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
             
+            if quoteRect.height > drawBounds.height {
+                fontSize -= 4
+            } else {
+                break
+            }
+            
+        }
+        
+        let format = UIGraphicsImageRendererFormat()
+        format.opaque = false
+        let renderer = UIGraphicsImageRenderer(bounds: quoteRect, format: format)
+        
+        quote.image = renderer.image { ctx in
+            str.draw(in: quoteRect)
         }
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateQuoate()
+    }
 
 }
 
