@@ -67,11 +67,14 @@ class ViewController: UIViewController {
         
         let format = UIGraphicsImageRendererFormat()
         format.opaque = false
-        let renderer = UIGraphicsImageRenderer(bounds: quoteRect, format: format)
+        let renderer = UIGraphicsImageRenderer(bounds: quoteRect.insetBy(dx: -30, dy: -30), format: format)
         
         quote.image = renderer.image { ctx in
-            ctx.cgContext.setShadow(offset: .zero, blur: 10, color: UIColor.black.cgColor)
-            str.draw(in: quoteRect)
+            for i in 1...5 {
+                ctx.cgContext.setShadow(offset: .zero, blur: CGFloat(i) * 2, color: UIColor.black.cgColor)
+                str.draw(in: quoteRect)
+            }
+           
         }
         
     }
