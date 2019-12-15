@@ -21,16 +21,32 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TOl-rL-DXp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCB-oK-Rtq">
+                                <rect key="frame" x="312" y="60" width="82" height="47"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="amc-Wb-Tp6"/>
+                                    <constraint firstAttribute="height" constant="47" id="fLD-O4-XDo"/>
+                                </constraints>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" red="0.92483610279999995" green="0.92483610279999995" blue="0.92483610279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EQU-Rs-hzK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="TOl-rL-DXp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ESY-DU-Lvz"/>
                             <constraint firstItem="HvT-Qe-knB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="QRy-Ql-rII"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TCB-oK-Rtq" secondAttribute="trailing" constant="20" id="Rph-YV-UzQ"/>
                             <constraint firstAttribute="bottom" secondItem="TOl-rL-DXp" secondAttribute="bottom" id="U0g-bf-5qE"/>
                             <constraint firstItem="HvT-Qe-knB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WkR-lB-AWe"/>
                             <constraint firstItem="HvT-Qe-knB" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="XqG-VG-6Xb"/>
                             <constraint firstItem="TOl-rL-DXp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="c5a-R7-w2o"/>
                             <constraint firstAttribute="bottom" secondItem="HvT-Qe-knB" secondAttribute="bottom" id="ggg-oY-vR2"/>
+                            <constraint firstItem="TCB-oK-Rtq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="iJ1-j1-auE"/>
                             <constraint firstItem="TOl-rL-DXp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ngj-6M-IQp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
