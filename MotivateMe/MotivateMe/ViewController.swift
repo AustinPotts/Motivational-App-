@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         let insetAmount = CGFloat(250)
         let drawBounds = quote.bounds.inset(by: UIEdgeInsets(top: insetAmount, left: insetAmount, bottom: insetAmount, right: insetAmount))
         
-        var quoteRect = CGRect(x: 0, y: 0, width: .greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
+       var quoteRect = CGRect(x: 0, y: 0, width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         
         
         
@@ -51,11 +51,11 @@ class ViewController: UIViewController {
         while true {
             font = UIFont(name: "Georgia-Italic", size: fontSize)!
             
-            attrs = [.font: font, .foregroundColor: UIColor.white]
+            attrs = [.font: font!, .foregroundColor: UIColor.white]
             
             str = NSAttributedString(string: selectedQuote.text, attributes: attrs)
             
-            quoteRect = str.boundingRect(with: CGSize(width: drawBounds.width, height: .greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: <#T##NSStringDrawingContext?#>)
+            quoteRect = str.boundingRect(with: CGSize(width: drawBounds.width, height: .greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
             
         }
         
